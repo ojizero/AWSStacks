@@ -14,6 +14,9 @@ end
 
 file '/var/www/html/index.html' do
 	content '<?php echo phpversion() ?>'
+	mode '0775'
+	owner 'apache'
+	group 'apache'
 end
 
 #template '/var/www/html/index.html' do
