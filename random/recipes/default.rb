@@ -10,6 +10,10 @@ service 'httpd' do
 	action [:enable, :start]
 end
 
+file '/var/www/html/index.html' do
+	content '<?php echo phpversion() ?>'
+end
+
 #template '/var/www/html/index.html' do
 #
 #end
