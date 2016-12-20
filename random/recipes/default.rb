@@ -4,7 +4,9 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-package 'httpd'
+package 'httpd' do 
+	action :update
+end
 
 service 'httpd' do
 	action [:enable, :start]
