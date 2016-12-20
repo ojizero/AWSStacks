@@ -17,8 +17,15 @@ file '/var/www/html/index.html' do
 end
 
 file '/var/www/html/index.php' do
-	content '<?php
-echo phpversion();'
+	content '<html>
+<body>
+<h1>
+<?php
+echo phpversion();
+?>
+</h1>
+</body>
+</html>'
 	mode '0775'
 	owner 'apache'
 	group 'apache'
