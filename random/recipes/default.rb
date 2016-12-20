@@ -13,7 +13,7 @@ service 'httpd' do
 end
 
 file '/var/www/html/index.html' do
-	content '<?php echo phpversion() ?>'
+	content 'This is a test page for testing.'
 end
 
 #template '/var/www/html/index.html' do
