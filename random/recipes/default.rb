@@ -13,6 +13,10 @@ service 'httpd' do
 end
 
 file '/var/www/html/index.html' do
+	action :delete
+end
+
+file '/var/www/html/index.php' do
 	content 'this is the content'
 	mode '0775'
 	owner 'apache'
