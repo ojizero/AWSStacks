@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: random
-# Recipe:: default
+# Recipe:: defaultmc	
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
@@ -11,7 +11,7 @@ package 'httpd' #do
 #end
 
 service 'httpd' do
-	action [:enable, :start]
+	action [:enable, :restart]
 end
 
 # file '/var/www/html/index.html' do
