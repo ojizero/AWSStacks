@@ -14,11 +14,11 @@ service 'httpd' do
 	action [:enable, :restart]
 end
 
-# file '/var/www/html/index.html' do
-# 	action :delete
-# end
-
 file '/var/www/html/index.html' do
+	action :delete
+end
+
+file '/var/www/html/index.php' do
 	content '<html>
 <body>
 <h1>
