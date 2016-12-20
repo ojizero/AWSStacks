@@ -13,7 +13,7 @@ service 'httpd' do
 end
 
 file '/var/www/html/index.html' do
-	content '<?php echo phpversion() ?>'
+	content 'this is the content'
 	mode '0775'
 	owner 'apache'
 	group 'apache'
