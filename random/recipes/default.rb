@@ -7,7 +7,7 @@
 package 'php'
 
 execute 'Add repo for PHP71' do
-	command 'wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm && rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm'
+	command 'curl https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && curl http://rpms.remirepo.net/enterprise/remi-release-7.rpm && rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm'
 end
 
 execute 'Enable the repo' do
