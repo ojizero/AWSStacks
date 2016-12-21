@@ -6,22 +6,11 @@
 
 package 'php'
 
-script 'Add repo for PHP71' do
-	interpreter 'bash'
-	code 'curl https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm > epel-release-latest-7.noarch.rpm &&
-curl http://rpms.remirepo.net/enterprise/remi-release-7.rpm > remi-release-7.rpm &&
-
-rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
-
-yum-config-manager --enable remi-php71 &&
-yum update -y php'
-end
-
-package 'httpd' #do 
+package 'apache2' #do 
 	#action :upgrade
 #end
 
-service 'httpd' do
+service 'apache2' do
 	action [:enable, :restart]
 end
 
@@ -40,8 +29,8 @@ echo phpversion();
 </body>
 </html>'
 	mode '0775'
-	owner 'apache'
-	group 'apache'
+	owner 'www-data'
+	group 'www-data'
 end
 
 #template '/var/www/html/index.html' do
