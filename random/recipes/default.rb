@@ -28,7 +28,7 @@ echo phpversion();
 </h1>
 </body>
 </html>'
-	mode '0775'
+	mode '0640'
 	owner 'www-data'
 	group 'www-data'
 end
