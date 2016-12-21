@@ -18,20 +18,20 @@ file '/var/www/html/index.html' do
 	action :delete
 end
 
-file '/var/www/html/index.php' do
-	content '<html>
-<body>
-<h1>
-<?php
-echo phpversion();
-?>
-</h1>
-</body>
-</html>'
-	mode '0775'
-	owner 'apache'
-	group 'apache'
-end
+# file '/var/www/html/index.php' do
+# 	content '<html>
+# <body>
+# <h1>
+# <?php
+# echo phpversion();
+# ?>
+# </h1>
+# </body>
+# </html>'
+# 	mode '0775'
+# 	owner 'apache'
+# 	group 'apache'
+# end
 
 #template '/var/www/html/index.html' do
 #
