@@ -8,9 +8,9 @@ the_app = search(:aws_opsworks_app).first # I assume it should store the applica
 
 #for now create a random file to test stuff out
 file '/var/www/html/theapp.html' do
-	content "#{the_app.to_a}"
+	content "#{the_app['data_sources'].to_a}"
 	mode '0775'
-	owner 'apache'
-	group 'apache'
+	owner 'www-data'
+	group 'www-data'
 end
 

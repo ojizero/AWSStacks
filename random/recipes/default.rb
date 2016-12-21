@@ -4,23 +4,15 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-package 'php'
+package 'php7.0'
 
-script 'Add repo for PHP71' do
-	interpreter 'bash'
-	code 'wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && 
-wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm && 
-rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm && 
-subscription-manager repos --enable=rhel-7-server-optional-rpms && 
-yum-config-manager --enable remi-php71 && 
-yum update -y php'
-end
+package 'libapache2-mod-php7.0'
 
-package 'httpd' #do 
+package 'apache2' #do 
 	#action :upgrade
 #end
 
-service 'httpd' do
+service 'apache2' do
 	action [:enable, :restart]
 end
 
@@ -38,9 +30,9 @@ echo phpversion();
 </h1>
 </body>
 </html>'
-	mode '0775'
-	owner 'apache'
-	group 'apache'
+	mode '0640'
+	owner 'www-data'
+	group 'www-data'
 end
 
 #template '/var/www/html/index.html' do
