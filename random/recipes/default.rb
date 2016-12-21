@@ -8,8 +8,8 @@ package 'php'
 
 script 'Add repo for PHP71' do
 	interpreter 'bash'
-	code 'wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && 
-wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm && 
+	code 'curl https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && 
+curl http://rpms.remirepo.net/enterprise/remi-release-7.rpm && 
 rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm && 
 subscription-manager repos --enable=rhel-7-server-optional-rpms && 
 yum-config-manager --enable remi-php71 && 
