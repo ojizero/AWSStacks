@@ -6,7 +6,7 @@
 
 package 'php7.0'
 
-packeg 'libapache2-mod-php7.0'
+package 'libapache2-mod-php7.0'
 
 package 'apache2' #do 
 	#action :upgrade
