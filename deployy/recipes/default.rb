@@ -7,7 +7,7 @@
 the_app = search(:aws_opsworks_app).first # I assume it should store the application assigned via opsworks stacks
 
 deploy '/var/www/html/' do
-	repo app['app_source']['url']
+	repo the_app['app_source']['url']
 	ssh_wrapper '/home/ubuntu/wrapper.sh'
 	symlink_before_migrate ({})
 	user 'www-data'
