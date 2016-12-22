@@ -6,11 +6,26 @@
 
 the_app = search(:aws_opsworks_app).first # I assume it should store the application assigned via opsworks stacks
 
-#for now create a random file to test stuff out
-file '/var/www/html/theapp.html' do
-	content "#{the_app['data_sources'].to_a}"
-	mode '0775'
-	owner 'www-data'
+deploy '/var/www/html/' do
+	repo app['app_source']['url']
+	ssh_wrapper '/home/ubuntu/wrapper.sh'
+	symlink_before_migrate ({})
+	user 'www-data'
 	group 'www-data'
+	action :deploy
+
+	before_symlink do
+		execute 'preinstall' do
+			command 'cd /var/www/html && php composer.phar install'
+		end
+
+		execute 'postinstall' do
+			command 'systemctl restart apache2'
+		end
+	end
+end
+
+template '/var/www/html/.env' do
+
 end
 
