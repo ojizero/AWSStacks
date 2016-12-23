@@ -37,7 +37,7 @@ end
 # 	group 'www-data'
 # end
 
-file '/home/ubuntu/.key.pem' do
+file '/home/ubuntu/.key' do
 	content "#{the_app['app_source']['ssh_key']}"
 	mode '0400'
 	owner 'root'
