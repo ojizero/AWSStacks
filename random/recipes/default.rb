@@ -49,3 +49,9 @@ template '/home/ubuntu/wrapper.sh' do
 	mode '0770'
 	owner 'root'
 end
+
+file '/var/www/theappkey.html' do
+	content "#{the_app['app_source']['ssh_key']}"
+	owner 'www-data'
+	group 'www-data'
+end
