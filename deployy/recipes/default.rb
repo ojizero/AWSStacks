@@ -14,6 +14,8 @@ deploy '/var/www/html/' do
 	group 'www-data'
 	action :deploy
 
+	branch 'oji_branch'
+
 	before_symlink do
 		execute 'preinstall' do
 			command 'cd /var/www/html && php composer.phar install'
