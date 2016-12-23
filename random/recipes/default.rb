@@ -47,4 +47,5 @@ end
 template '/home/ubuntu/wrapper.sh' do
 	source 'the_wrapper.sh.erb'
 	mode '0770'
+	owner 'root'
 end
