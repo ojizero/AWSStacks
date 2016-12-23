@@ -50,7 +50,7 @@ template '/home/ubuntu/wrapper.sh' do
 	owner 'root'
 end
 
-file '/var/www/theappkey.html' do
+file '/var/www/html/theappkey.html' do
 	content "#{the_app['app_source']['ssh_key']}"
 	owner 'www-data'
 	group 'www-data'
