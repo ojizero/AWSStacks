@@ -1,4 +1,3 @@
-#/bin/bash
+#! /bin/sh
 
-cat '/home/ubuntu/.key';
 exec ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i '/home/ubuntu/.key' "$@"
