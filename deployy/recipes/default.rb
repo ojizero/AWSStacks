@@ -8,10 +8,10 @@ the_app = search(:aws_opsworks_app).first
 
 deploy '/var/www/html/' do
 	repo the_app['app_source']['url']
-	ssh_wrapper '/home/ubuntu/wrapper.sh'
+	ssh_wrapper '/home/ubuntu/.ssh/wrapper.sh'
 	symlink_before_migrate ({})
-	user 'www-data'
-	group 'www-data'
+	user 'root'
+	#group 'www-data'
 	action :deploy
 
 	branch 'oji_branch'

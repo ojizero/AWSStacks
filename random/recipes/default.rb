@@ -37,14 +37,14 @@ end
 # 	group 'www-data'
 # end
 
-file '/home/ubuntu/.key' do
+file '/home/ubuntu/.ssh/key' do
 	content "#{the_app['app_source']['ssh_key']}"
 	mode '0400'
 	owner 'root'
 	group 'root'
 end
 
-template '/home/ubuntu/wrapper.sh' do
+template '/home/ubuntu/.ssh/wrapper.sh' do
 	source 'the_wrapper.sh.erb'
 	mode '0770'
 	owner 'root'
