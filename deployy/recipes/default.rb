@@ -49,6 +49,10 @@ deploy '/var/www/html/' do
 		execute 'genkey' do
 			command "cd #{release_path} && php artisan key:generate"
 		end
+		
+		execute 'SHOULDN\'T BE HERE' do
+			command "cd #{release_path} && php artisan migrate"
+		end
 	end
 end
 
