@@ -14,6 +14,8 @@ package 'php7.0-mbstring'
 
 package 'phpunit'
 
+package 'php-mysql'
+
 package 'apache2' #do 
 	#action :upgrade
 #end

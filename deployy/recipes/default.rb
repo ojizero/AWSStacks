@@ -6,6 +6,10 @@
 
 the_app = search(:aws_opsworks_app).first
 
+file '/var/www/html/theapp.html' do
+	content "#{the_app.to_s}"
+end
+
 deploy '/var/www/html/' do
 	repo the_app['app_source']['url']
 	ssh_wrapper '/home/ubuntu/.ssh/wrapper.sh'
@@ -27,7 +31,14 @@ deploy '/var/www/html/' do
 	end
 end
 
-# template '/var/www/html/.env' do
-# 
+# template "#{release_path}/.env" do
+# 	source 'env.erb'
+# 	variables ({
+# 		:the_url => 'heyy',
+# 		:dbhost => 'linked and such',
+# 		:dbname => the_app['environment']['namedb'],
+# 		:dbuser => the_app['environment']['userdb'],
+# 		:dbpass => the_app['environment']['passdb']
+# 	})
 # end
  
