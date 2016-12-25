@@ -22,12 +22,12 @@ deploy '/var/www/html/' do
 		end
 
 		execute 'postinstall' do
-			command 'systemctl restart apache2'
+			command "chown -R www-data:www-data #{release_path} && systemctl restart apache2"
 		end
 	end
 end
 
-template '/var/www/html/.env' do
-
-end
-
+# template '/var/www/html/.env' do
+# 
+# end
+ 
