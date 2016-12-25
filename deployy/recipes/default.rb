@@ -45,11 +45,11 @@ deploy '/var/www/html' do
 		execute 'key:generate' do
 			command "cd #{release_path} && php artisan key:generate"
 		end
-
-		execute 'postinstall' do
-			command "chown -R www-data:www-data #{release_path} && systemctl restart nginx"
-		end
 	end
+end
+
+execute 'postinstall' do
+	command "chown -R www-data:www-data /var/www/html/ && systemctl restart nginx"
 end
 
 
