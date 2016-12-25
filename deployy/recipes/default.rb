@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-the_app = search(:aws_opsworks_app).first # I assume it should store the application assigned via opsworks stacks
+the_app = search(:aws_opsworks_app).first
 
 deploy '/var/www/html/' do
 	repo the_app['app_source']['url']
