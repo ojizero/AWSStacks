@@ -10,6 +10,10 @@ package 'php7.0'
 
 package 'libapache2-mod-php7.0'
 
+package 'php7.0-mbstring'
+
+package 'phpunit'
+
 package 'apache2' #do 
 	#action :upgrade
 #end
