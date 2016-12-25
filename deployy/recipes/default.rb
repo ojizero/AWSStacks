@@ -41,7 +41,10 @@ deploy '/var/www/html/' do
 	  		  	:dbpass => database['db_password'] # the_app['environment']['passdb']
   			})
 		end
- 
+ 		
+		template '/etc/apache2/sites-available/000-default.conf' do
+			source 'the_host_file_conf.erb'
+		end
 	end
 end
 
