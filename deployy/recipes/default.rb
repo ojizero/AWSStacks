@@ -18,7 +18,7 @@ deploy '/var/www/html/' do
 
 	before_symlink do
 		execute 'preinstall' do
-			command 'cd /var/www/html && php composer.phar install'
+			command "cd #{release_path} && php composer.phar install"
 		end
 
 		execute 'postinstall' do
