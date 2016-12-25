@@ -12,7 +12,7 @@ the_LB = search(:aws_opsworks_elastic_load_balancer).first
 # 	content "#{the_app.to_s}"
 # end
 
-deploy '/var/www/html/' do
+deploy '/var/www/html' do
 	repo the_app['app_source']['url']
 	ssh_wrapper '/home/ubuntu/.ssh/wrapper.sh'
 	symlink_before_migrate ({})
