@@ -43,7 +43,7 @@ deploy '/var/www/html/' do
 		end
  		
 		template '/etc/apache2/sites-available/000-default.conf' do
-			source 'the_host_file_conf.erb'
+			source 'the_host_file.conf.erb'
 		end
 	end
 end
