@@ -16,32 +16,21 @@ package 'phpunit'
 
 package 'php-mysql'
 
-package 'apache2' #do 
-	#action :upgrade
-#end
+package 'php-mcrypt'
 
-service 'apache2' do
+# package 'apache2' #do 
+# 	#action :upgrade
+# #end
+# 
+# service 'apache2' do
+# 	action [:disable, :stop]
+# end
+
+package 'nginx'
+
+service 'nginx' do
 	action [:enable, :restart]
 end
-
-# file '/var/www/html/index.html' do
-# 	action :delete
-# end
-# 
-# file '/var/www/html/index.php' do
-# 	content '<html>
-# <body>
-# <h1>
-# <?php
-# echo phpversion();
-# ?>
-# </h1>
-# </body>
-# </html>'
-# 	mode '0640'
-# 	owner 'www-data'
-# 	group 'www-data'
-# end
 
 file '/home/ubuntu/.ssh/key' do
 	content "#{the_app['app_source']['ssh_key']}"
@@ -56,8 +45,8 @@ template '/home/ubuntu/.ssh/wrapper.sh' do
 	owner 'root'
 end
 
-file '/var/www/html/theappkey.html' do
-	content "#{the_app['app_source']['ssh_key']}"
-	owner 'www-data'
-	group 'www-data'
-end
+# file '/var/www/html/theappkey.html' do
+# 	content "#{the_app['app_source']['ssh_key']}"
+# 	owner 'www-data'
+# 	group 'www-data'
+# end

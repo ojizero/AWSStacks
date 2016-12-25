@@ -8,9 +8,9 @@ the_app = search(:aws_opsworks_app).first
 database = search(:aws_opsworks_rds_db_instance).first
 the_LB = search(:aws_opsworks_elastic_load_balancer).first
 
-file '/var/www/html/theapp.html' do
-	content "#{the_app.to_s}"
-end
+# file '/var/www/html/theapp.html' do
+# 	content "#{the_app.to_s}"
+# end
 
 deploy '/var/www/html/' do
 	repo the_app['app_source']['url']
@@ -23,12 +23,8 @@ deploy '/var/www/html/' do
 	branch 'oji_branch'
 
 	before_symlink do
-		execute 'preinstall' do
+		execute 'install' do
 			command "cd #{release_path} && php composer.phar install"
-		end
-
-		execute 'postinstall' do
-			command "chown -R www-data:www-data #{release_path} && systemctl restart apache2"
 		end
 
 		template "#{release_path}/.env" do
@@ -41,9 +37,17 @@ deploy '/var/www/html/' do
 	  		  	:dbpass => database['db_password'] # the_app['environment']['passdb']
   			})
 		end
- 		
-		template '/etc/apache2/sites-available/000-default.conf' do
-			source 'the_host_file.conf.erb'
+ 
+ 		template '/etc/nginx/sites-available/default.conf' do
+			source 'nginx_site.conf.erb'
+		end
+		
+		execute 'key:generate' do
+			command "cd #{release_path} && php artisan key:generate"
+		end
+
+		execute 'postinstall' do
+			command "chown -R www-data:www-data #{release_path} && systemctl restart nginx"
 		end
 	end
 end
