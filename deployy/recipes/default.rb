@@ -45,6 +45,10 @@ deploy '/var/www/html/' do
 		template '/etc/apache2/sites-available/000-default.conf' do
 			source 'the_host_file.conf.erb'
 		end
+		
+		execute 'genkey' do
+			command "cd #{release_path} && php artisan key:generate"
+		end
 	end
 end
 
