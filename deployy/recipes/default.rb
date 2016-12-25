@@ -38,7 +38,7 @@ deploy '/var/www/html/' do
   			})
 		end
  
- 		template '/etc/nginx/sites-available/default.conf' do
+ 		template '/etc/nginx/sites-available/default' do
 			source 'nginx_site.conf.erb'
 		end
 		
